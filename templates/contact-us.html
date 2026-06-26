@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Notes Circle</title>
+
+<link rel="stylesheet"
+href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+<nav class="navbar">
+
+<h2>📝 Notes Circle</h2>
+
+<ul>
+<li><a href="/">Home</a></li>
+<li><a href="/contact">Contact Us</a></li>
+<li><a href="/dashboard">Dashboard</a></li>
+</ul>
+
+</nav>
+
+<div class="hero">
+
+<h1>Welcome to Notes Circle</h1>
+
+<p>
+Save and manage your notes easily using our chatbot.
+</p>
+
+</div>
+
+<!-- Chatbot Icon -->
+<div class="chat-icon" onclick="toggleChat()">
+💬
+</div>
+
+<!-- Chatbot -->
+
+<div class="chat-container" id="chatContainer">
+
+<div class="chat-header">
+Notes Circle Bot
+</div>
+
+<div class="chat-body" id="chatBody">
+
+<div class="bot-message">
+Welcome to Notes Circle! <br><br>
+
+Type:
+<br>
+<b>register</b> - New User
+<br>
+<b>login</b> - Existing User
+</div>
+
+</div>
+
+<div class="chat-footer">
+
+<input
+type="text"
+id="userInput"
+placeholder="Type here..."
+>
+
+<button onclick="sendMessage()">
+Send
+</button>
+
+</div>
+
+</div>
+
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>
+
+</body>
+</html>

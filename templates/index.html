@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notes Circle</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <h2>📝 Notes Circle</h2>
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/contact">Contact Us</a></li>
+            <li id="nav-dashboard" style="display:none"><a href="/dashboard">Dashboard</a></li>
+            <li id="nav-logout" style="display:none"><a href="#" onclick="logoutUser()">Logout (<span id="nav-username"></span>)</a></li>
+        </ul>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero" id="hero-section">
+        <h1>Store Your Notes Securely</h1>
+        <p>Login or register to keep all your notes in one place — always available.</p>
+        <button id="loginBtn" class="main-btn">Login</button>
+        <button id="registerBtn" class="main-btn outline">Register</button>
+    </section>
+
+    <!-- AUTH CARD -->
+    <section class="auth-section" id="auth-section">
+
+        <!-- LOGIN FORM -->
+        <div class="auth-card" id="loginForm">
+            <h2>Welcome back</h2>
+            <p class="auth-sub">Enter your email to continue</p>
+            <input type="email" id="loginEmail" placeholder="your@email.com">
+            <div id="loginError" class="error-msg"></div>
+            <button id="loginSubmit">Login</button>
+            <p class="auth-switch">No account? <a href="#" onclick="showRegister()">Register</a></p>
+        </div>
+
+        <!-- REGISTER FORM -->
+        <div class="auth-card hidden" id="registerForm">
+            <h2>Create account</h2>
+            <p class="auth-sub">Fill in your details to get started</p>
+            <input type="text" id="firstName" placeholder="First name">
+            <input type="text" id="lastName" placeholder="Last name">
+            <input type="email" id="registerEmail" placeholder="your@email.com">
+            <div id="registerError" class="error-msg"></div>
+            <button id="registerSubmit">Register</button>
+            <p class="auth-switch">Already have an account? <a href="#" onclick="showLogin()">Login</a></p>
+        </div>
+
+    </section>
+
+    <!-- NOTES SECTION (shown only when logged in) -->
+    <section class="notes-section hidden" id="notesSection">
+
+        <div class="notes-header">
+            <div>
+                <h2>Your Notes</h2>
+                <p id="notes-greeting" class="notes-greeting"></p>
+            </div>
+            <button id="addNoteBtn" onclick="toggleNoteInput()">+ Add Note</button>
+        </div>
+
+        <!-- ADD NOTE INPUT (hidden by default) -->
+        <div class="note-input hidden" id="noteInputArea">
+            <textarea id="noteText" placeholder="Write your note here..."></textarea>
+            <div class="note-input-actions">
+                <button id="saveNote">Save note</button>
+                <button id="cancelNote" class="btn-ghost" onclick="toggleNoteInput()">Cancel</button>
+            </div>
+        </div>
+
+        <!-- EDIT NOTE INPUT (hidden by default) -->
+        <div class="note-input hidden" id="editInputArea">
+            <textarea id="editNoteText" placeholder="Edit your note..."></textarea>
+            <input type="hidden" id="editNoteId">
+            <div class="note-input-actions">
+                <button id="updateNote">Save changes</button>
+                <button class="btn-ghost" onclick="cancelEdit()">Cancel</button>
+            </div>
+        </div>
+
+        <!-- NOTES GRID -->
+        <div id="notesContainer">
+            <!-- Notes rendered here -->
+        </div>
+
+        <div id="notesEmpty" class="notes-empty hidden">
+            <p>You don't have any notes yet.</p>
+            <button onclick="toggleNoteInput()" class="main-btn">Write your first note</button>
+        </div>
+
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <p>© 2026 Notes Circle — Store your notes safely.</p>
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
